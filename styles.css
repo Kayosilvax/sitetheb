@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #6a0dad; /* Roxo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative; /* Para o texto flutuar sobre o conteúdo */
+}
+
+/* Animação do texto "Te Amo" */
+.te-amo {
+    position: absolute;
+    bottom: -50px;  /* Começa fora da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #ff0000;
+    font-weight: bold;
+    animation: subir 5s linear infinite;
+}
+
+/* Animação para o efeito de subida */
+@keyframes subir {
+    0% {
+        bottom: -50px; /* Começa fora da tela */
+        opacity: 0;
+    }
+    50% {
+        bottom: 50%; /* Atinge o meio da tela */
+        opacity: 1;
+    }
+    100% {
+        bottom: 100%; /* Vai para o fundo da tela */
+        opacity: 0;
+    }
+}
+
+.album-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    justify-content: center;
+    margin-top: 80px; /* Cria espaço suficiente abaixo do banner */
+}
+
+.photo-card {
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.photo-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.photo-card:hover .photo-inner {
+    transform: rotateY(180deg);
+}
+
+.photo-front, .photo-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+}
+
+.photo-front {
+    background-size: cover;
+    background-position: center;
+}
+
+.photo-back {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 10px;
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover .hover-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.audio {
+    display: none;
+}
+
+.aniversario-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1000; 
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #6a0dad;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.footer span {
+    font-weight: bold;
+    color: #ffffff; 
+}
